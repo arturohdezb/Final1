@@ -21,3 +21,18 @@ EXCEPTION
     THEN
       DBMS_OUTPUT.put_line(SQLERRM);
 END;
+
+DECLARE
+  P decimal:= 6000000;
+  R decimal;
+  I decimal:=1;
+  TASA decimal:=0.3;
+  n NUMBER:=72;
+BEGIN
+    R:=(P*(I*(POWER((1+I),n))))/(POWER((1+TASA),n)-1);
+  DBMS_OUTPUT.put_line(R);
+EXCEPTION
+  WHEN OTHERS
+    THEN
+      DBMS_OUTPUT.put_line(SQLERRM);
+END;
