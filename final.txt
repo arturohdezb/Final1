@@ -1,0 +1,23 @@
+create table amortizacion (
+  numero_cuota integer,
+  cuota_mensual decimal(15,2),
+  abono_capital decimal(15,2),
+  abono_interes decimal(15,2),
+  saldo decimal(15,2)
+)
+
+DECLARE
+  tasa number:= 30;
+  primera decimal;
+  segunda decimal;
+  mv decimal;
+BEGIN
+    primera:=(1+(tasa/100));
+    segunda:= (30/360);
+    mv:=power(primera,segunda)-1;
+  DBMS_OUTPUT.put_line(mv);
+EXCEPTION
+  WHEN OTHERS
+    THEN
+      DBMS_OUTPUT.put_line(SQLERRM);
+END;
